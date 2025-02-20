@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		{% block stylesheets %}
+			<!-- Bootstrap CSS -->
+			<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+		{% endblock %}
+	</head>
+	<body>
+		<!-- Navigation Bar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="{{ path('todo_index') }}">MyApp</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav ml-auto">
+
+					{% if app.user %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_logout') }}">
+								You are logged in as
+								{{ app.user.userIdentifier }}
+								<span class="font-weight-bold p-1  rounded bg-primary">Logout</span>
+							</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_login') }}">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_register') }}">Register</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+		{% for message in app.flashes('error') %}
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				{{ message }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		{% endfor %}
+		<!-- Main Content -->
+		<div class="container mt-4"> {% block body %}{% endblock %}
+			</div>
+
+			{% block javascripts %}
+				<!-- Bootstrap JS (optional) -->
+				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+			{% endblock %}
+		</body>
+	</html>

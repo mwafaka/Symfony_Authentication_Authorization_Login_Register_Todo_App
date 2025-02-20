@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Todo</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Create New Todo</h1>
+        
+        {# Start the form rendering #}
+        {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+        
+        <div class="form-group">
+            {# Render the title input field with Bootstrap classes #}
+            {{ form_label(form.title, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.title, {'attr': {'class': 'text-danger'}}) }}
+        </div>
+        
+        <div class="form-group">
+            {# Render the completed checkbox field with Bootstrap classes #}
+            <div class="form-check">
+                {{ form_widget(form.completed, {'attr': {'class': 'form-check-input'}}) }}
+                {{ form_label(form.completed, null, {'attr': {'class': 'form-check-label'}}) }}
+            </div>
+        </div>
+        
+        <div class="form-group text-center">
+            {# Submit button styled with Bootstrap #}
+            <button type="submit" class="btn btn-primary">Save Todo</button>
+        </div>
+
+        {# End the form rendering #}
+        {{ form_end(form) }}
+        
+        <div class="text-center mt-3">
+            <a href="{{ path('todo_index') }}" class="btn btn-link">Back to Todo List</a>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS from CDN (optional for better functionality) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
