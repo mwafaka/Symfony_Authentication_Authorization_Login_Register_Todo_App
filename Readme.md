@@ -118,16 +118,6 @@ class TodoType extends AbstractType {
 ```sh
 symfony server:start --no-tls
 ```
-Visit `http://127.0.0.1:8000` in your browser.
 
-## Optional Enhancements
-- Add authentication using Symfony Security
-- Improve UI with additional Bootstrap components
-- Use JavaScript for interactive actions
 
-## License
-This project is open-source and available for use under the MIT License.
-
----
-This guide provides all necessary steps to set up and run the Todo app using Symfony 6. Let me know if you need any modifications!
 
